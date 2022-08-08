@@ -6,6 +6,18 @@ const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
 //만약 string을 작성하다 오타가 나면 js는 지적하지 않는다
 //하지만 변수를 오타 낼 경우 js는 console에서 알려줄 것
+
+function greetingsYes(username){
+   greeting.classList.remove(HIDDEN_CLASSNAME);
+   greeting.innerText = `Hello ${username}`;
+   const div = document.createElement("div");
+   const button = document.createElement("button");
+   button.innerText = "logout";
+   div.appendChild(button);
+   greeting.appendChild(div);
+   button.addEventListener("click", logout);
+}
+
 function onLoginSubmit(event) {
   event.preventDefault();
   loginForm.classList.add(HIDDEN_CLASSNAME);
@@ -14,6 +26,13 @@ function onLoginSubmit(event) {
   greetingsYes(username);
 
 }
+
+function logout() {
+   localStorage.removeItem(USERNAME_KEY);
+   loginForm.classList.remove(HIDDEN_CLASSNAME);
+   greeting.classList.add(HIDDEN_CLASSNAME);
+   }
+
 const saveUsername= localStorage.getItem(USERNAME_KEY);
 
 if(saveUsername === null){
@@ -26,11 +45,6 @@ greetingsYes(saveUsername);
    //show the greetings
 }
 
-function greetingsYes(username){
-   greeting.classList.remove(HIDDEN_CLASSNAME);
-   greeting.innerText = `Hello ${username}`;
-   
-}
 
 //  greeting.innerText = `Hello ${username}`
 //greeting.classList.remove(HIDDEN_CLASSNAME);
