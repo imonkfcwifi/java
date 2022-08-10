@@ -17,8 +17,4 @@ setInterval(getClock, 1000);
 //sayhello function을 5000ms ,즉 5초마다 호출
 //setTimeout은 일정시간이 지난 후 함수를 실행
 
-//padStart()는 string에서 쓸수있는 function (앞열에 추가)
-
-//txt to number -> new Date().getHours( === 19
-//txt to string -> String(new date().getHours()) === "19"
-//txt to string -> String()로 감싸준다.
+//padStart()는 string에서 쓸수있는 function (앞열에 추가), string이 가져야 하는 길이를 설정한다.
