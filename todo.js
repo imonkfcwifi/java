@@ -4,7 +4,7 @@ const toDoInput = document.querySelector("#todo-form input");
 // = todoForm.querySelector("input");
 let toDos = [];
 //const toDos = [];의 값이 항상 비어있기 때문에 초기화 현상이 발생했다.
-    //newTodo를 빈 array였던 toDos array에 push 했기에 계속 추가할때마다 초기화됐던것
+    //newtodo를 빈 array였던 toDos array에 push 했기에 계속 추가할때마다 초기화됐던것
     //그래서 let으로 가변수로 바꾼다, 그럼 모든게 다 해결
 const TODOS_KEY = "todos";
 //local storage는 text만 저장가능
@@ -17,12 +17,18 @@ function saveToDos(){
 function handleToDoSubmit(event){
 
     event.preventDefault();
-    const newTodo = toDoInput.value;
+    const newtodo = toDoInput.value;
     toDoInput.value="";
-    toDos.push(newTodo);
-    paintTodo(newTodo);
+    const newtodoObject = {
+        text:newtodo,
+        id: Date.now()
+        
+        //id로 각각의 li item을 구별할 수 있다.
+    }
+    toDos.push(newtodoObject);
+    paintTodo(newtodoObject);
     saveToDos();
-    //input의 value를 새로운 변수에 복사하는 것이기 때문에 value의 값이 empty가 되더라도 값은 newTodo 저장되어 남아있다.
+    //input의 value를 새로운 변수에 복사하는 것이기 때문에 value의 값이 empty가 되더라도 값은 newtodo 저장되어 남아있다.
 }
 
 
@@ -46,9 +52,10 @@ if (savedTodos !== null){
 
 toDoForm.addEventListener("submit",handleToDoSubmit);
 
-function paintTodo(newTodo){
+function paintTodo(아무거나){
 
     const list = document.createElement("li");
+    list.id = 아무거나.id;
     //const 뒤 list는 상관없지만 creatElement에서의 li는 html과 같아야 함.
     const spanding = document.createElement("span");
     const button = document.createElement("button");
@@ -57,8 +64,9 @@ function paintTodo(newTodo){
     list.appendChild(spanding);
     list.appendChild(button);
     //li안에 span 생성 === createElement("span")
-    spanding.innerText = newTodo;
-    //span안에 들어갈 newTodo는 사용자가 form에서 우리에게 준 newTodo 값이다.
+    spanding.innerText = 아무거나.text;
+    //span안에 들어갈 newtodo는 사용자가 form에서 우리에게 준 newtodo 값이다.
+    //이제 newtodo안에 newtodoObject에 있는 text가 되어야 함.
     toDoList.appendChild(list);
     //todolist에 <li></li> 생성하기 === createElement("li")
 }
