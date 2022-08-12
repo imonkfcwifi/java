@@ -3,11 +3,13 @@ const toDoList = document.querySelector("#todo-list");
 const toDoInput = document.querySelector("#todo-form input");
 // = todoForm.querySelector("input");
 const toDos = [];
+const TODOS_KEY = "todos";
 //local storage는 text만 저장가능
 
 function saveToDos(){
-    localStorage.setItem("todos",JSON.stringify(toDos));
+    localStorage.setItem(TODOS_KEY,JSON.stringify(toDos));
     //JSON.Stringify는 arry나 어떤 javascript 코드건 간에 string으로 바꿔준다.
+    //JSON.parase는 JavaScript가 이해할 수 있는 array로 만들어준다.(구문분석, 해석을 도맡아줌.)
 }
 function handleToDoSubmit(event){
 
@@ -46,3 +48,19 @@ function deleteToDo(event){
     removeParent.remove();
     //어떤 버튼을 지울건지 정해줘야함. 그냥 버튼으로 해놓으면 하나만 눌러도 모든 button을 인식해서 function을 실행시켜버림
 }
+
+function sayhello(item){
+    console.log("this is the turn of",item);
+}
+
+const savedTodos = localStorage.getItem(TODOS_KEY);
+console.log(savedTodos);
+if (savedTodos !== null){
+    const parsedTodos = JSON.parse(savedTodos);
+    parsedTodos.forEach(sayhello);
+    //sayhello("a"),sayhello("b") . . .
+    //array 이기에 가능한 일이다.
+
+}
+
+//array는 가장 중요한 data type, 각각의 item에 대해 function 가능
