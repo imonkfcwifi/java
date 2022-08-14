@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Momentum App</title>
   </head>
   <body>
-    <form id="login-form" class="hidden">
+    <h2 id="clock">00:00</h2>
+    <form class="hidden" id="login-form">
       <input
         required
         maxlength="15"
@@ -16,7 +17,25 @@
       />
       <input type="submit" value="Log In" />
     </form>
-    <h1 id="greeting" class="hidden"></h1>
-    <script src="java.js"></script>
-  </body>
-</html>
+    <form id="todo-form">
+      <input type="text" placeholder="write a to do and press enter" required/>
+    </form>
+    <ul id="todo-list">
+
+    </ul>
+    <h1 class="hidden" id="greeting"></h1>
+    <div id="quote">
+    <span></span>
+    <span></span>
+    </div>
+    <script src="js/greetings.js"></script>
+    <script src="js/clock.js"></script>
+    <script src="js/quotes.js"></script>
+    <script src="js/backgrounds.js"></script>
+    <script src="js/todo.js"></script>
+    <script src="js/weather.js"></script>
+    </body>
+  </html>
+
+  <!-- 위에서 아래로 읽기때문에 clock을 맨 위로 올리고싶다면 맨 위로, 아래로 놓고싶다면 아래로 놓으면된다. 그러면 h1 h2이게 무슨 소용이지..
+  아닌가 내가 너무 아직 아무것도 모르는건가 아 이거 요소로 보면 다 보이네 조심해야겠다. ctrl + / 하면 주석처리가 된다. 모든곳에 쓰일수있다. -->
