@@ -51,7 +51,8 @@ const quotes = [
 const quote = document.querySelector("#quote span:first-child");
 const author = document.querySelector("#quote span:last-child");
 
-const randomQuotes = quotes[Math.floor(Math.random()*quotes.length)];
+const todaysQuote = quotes[Math.floor(Math.random()*quotes.length)];
 
-author.innerText= randomQuotes.author;
-quote.innerText = randomQuotes.quotes;
+
+quote.innerText = todaysQuote.quotes;
+author.innerText= todaysQuote.author;
